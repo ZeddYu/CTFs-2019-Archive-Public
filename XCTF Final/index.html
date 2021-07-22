@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <style>@import url("/static/css/cerulean;
+@import url(https://www.baidu.com)/bootstrap.min.css")</style>
+    
+<style>@import url("/static/css/<?php echo $_GET[a];?>/bootstrap.min.css")</style>
+    <title>
+    User info
+</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <span class="navbar-brand">noxss2019</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                
+		    <li class="nav-item dropdown mr-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Skins</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="?theme=cerulean">cerulean</a><a class="dropdown-item" href="?theme=cyborg">cyborg</a><a class="dropdown-item" href="?theme=default">default</a><a class="dropdown-item" href="?theme=journal">journal</a><a class="dropdown-item" href="?theme=lumen">lumen</a><a class="dropdown-item" href="?theme=materia">materia</a><a class="dropdown-item" href="?theme=pulse">pulse</a><a class="dropdown-item" href="?theme=simplex">simplex</a><a class="dropdown-item" href="?theme=slate">slate</a><a class="dropdown-item" href="?theme=spacelab">spacelab</a><a class="dropdown-item" href="?theme=united">united</a><a class="dropdown-item" href="?theme=cosmo">cosmo</a><a class="dropdown-item" href="?theme=darkly">darkly</a><a class="dropdown-item" href="?theme=flatly">flatly</a><a class="dropdown-item" href="?theme=litera">litera</a><a class="dropdown-item" href="?theme=lux">lux</a><a class="dropdown-item" href="?theme=minty">minty</a><a class="dropdown-item" href="?theme=sandstone">sandstone</a><a class="dropdown-item" href="?theme=sketchy">sketchy</a><a class="dropdown-item" href="?theme=solar">solar</a><a class="dropdown-item" href="?theme=superhero">superhero</a><a class="dropdown-item" href="?theme=yeti">yeti</a>
+                        </div>
+                    </li>
+                    <span class="navbar-text mr-4">zedd</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/logout">Logout</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h4 class="card-title">zedd</h4>
+                <span class="card-subtitle mb-3" name="status"></span>
+                <span class="card-text">Join time: Oct. 26, 2019, 11:40 a.m.</span>
+                <span class="card-text">Last seen: Oct. 26, 2019, 11:40 a.m.</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<marquee behavior="alternate" style="position: fixed; bottom: 1.337em; margin: 0 1.337em;">Remember noxss? This is it now, feel old yet?</marquee>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<style>
+.card{
+    cursor: default;
+}
+span[name="status"]{
+    cursor: text;
+    word-break: break-all;
+}
+span[name="status"]::before{
+    content: '💬 ';
+}
+span[name="status"]:hover{
+    background: #eeeeee80;
+}
+</style>
+<script>
+  let csrf_token = 'frYf09Dtop2KzkLKTCGXGWfYRRURfWn831SUunV0T2qEQC2pWQjpVd0bz7wfAgPQ', secret = 'you have no secret';
+  let statusSpan = document.getElementsByName('status')[0];
+  statusSpan.onclick = () => {
+    let newStatus = prompt("Update your status: ", statusSpan.innerText);
+    if (newStatus) {
+      $.post('/account/setstatus', data={
+        csrfmiddlewaretoken: csrf_token,
+        status: newStatus
+      }).then(resp=>{
+        location.reload()
+      })
+    }
+  }
+</script>
+
+</body>
+</html>
